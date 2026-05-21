@@ -16,6 +16,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--background);
             color: #F0F0F0;
+            scroll-behavior: smooth;
         }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .grid-bg {
@@ -24,10 +25,18 @@
         }
         .shadow-glow { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
         .selection\:bg-accent\/30 ::selection { background-color: rgba(0, 212, 255, 0.3); }
+        .menu-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px rgba(0, 212, 255, 0.3);
+        }
     </style>
 </head>
 <body class="grid-bg selection:bg-accent/30">
-    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-[#1A2035]">
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-[#1A2035] sticky top-0 bg-[#0A0E1A]/80 backdrop-blur-md z-50">
         <div class="flex items-center gap-2">
             <div class="w-8 h-8 bg-[#00D4FF] flex items-center justify-center rounded shadow-glow">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A0E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
@@ -35,8 +44,8 @@
             <span class="font-mono text-xl font-bold tracking-tighter uppercase">Vesta Spices</span>
         </div>
         <div class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-white/60">
-            <a href="#concept" class="hover:text-[#00D4FF] transition-colors">The Concept</a>
-            <a href="#kits" class="hover:text-[#00D4FF] transition-colors">The Kits</a>
+            <a href="#concept" class="hover:text-[#00D4FF] transition-colors">Concept</a>
+            <a href="#menu" class="hover:text-[#00D4FF] transition-colors">The Menu</a>
             <a href="#waitlist" class="bg-[#00D4FF]/10 border border-[#00D4FF]/20 px-4 py-2 rounded-full text-[#00D4FF] hover:bg-[#00D4FF]/20 transition-all">Join Waitlist</a>
         </div>
     </nav>
@@ -96,48 +105,26 @@
         </div>
     </section>
 
-    <section id="kits" class="max-w-7xl mx-auto px-6 py-32">
-        <h2 class="font-mono text-3xl font-bold uppercase mb-16 flex items-center gap-4">
-            <span class="w-12 h-[1px] bg-[#00D4FF]"></span>
-            The Launch Trio
-        </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-[#1A2035] border border-[#1A2035] hover:border-[#00D4FF]/40 transition-all group overflow-hidden rounded-lg">
-                <div class="h-48 overflow-hidden">
-                    <img src="images/macro-shot-of-vibrant-red-szechuan-peppe.png" alt="Mapo Tofu Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <h4 class="font-mono font-bold text-lg mb-4">Szechuan Mapo Tofu</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono border border-white/10 px-2 py-1 rounded text-white/50 uppercase tracking-widest">Da Hong Pao</span>
-                        <span class="text-[10px] font-mono border border-white/10 px-2 py-1 rounded text-white/50 uppercase tracking-widest">Chili Flakes</span>
-                    </div>
-                </div>
+    <!-- NEW MENU SECTION -->
+    <section id="menu" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+                <h2 class="font-mono text-3xl font-bold uppercase mb-4 flex items-center gap-4">
+                    <span class="w-12 h-[1px] bg-[#00D4FF]"></span>
+                    This Month's Menu
+                </h2>
+                <p class="text-white/50 max-w-xl font-light">Explore our curated selection of high-barrier dry spice kits. Each recipe is designed to be completed in under 30 minutes.</p>
             </div>
-            <div class="bg-[#1A2035] border border-[#1A2035] hover:border-[#00D4FF]/40 transition-all group overflow-hidden rounded-lg">
-                <div class="h-48 overflow-hidden">
-                    <img src="images/macro-shot-of-golden-ras-el-hanout-spice.png" alt="Tagine Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <h4 class="font-mono font-bold text-lg mb-4">Moroccan Lamb Tagine</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono border border-white/10 px-2 py-1 rounded text-white/50 uppercase tracking-widest">Ras el Hanout</span>
-                        <span class="text-[10px] font-mono border border-white/10 px-2 py-1 rounded text-white/50 uppercase tracking-widest">True Cinnamon</span>
-                    </div>
-                </div>
+            <div class="font-mono text-[10px] uppercase tracking-widest text-[#00D4FF] bg-[#00D4FF]/10 px-4 py-2 rounded border border-[#00D4FF]/20">
+                Update Status: LIVE_CATALOG_V1
             </div>
-            <div class="bg-[#1A2035] border border-[#1A2035] hover:border-[#00D4FF]/40 transition-all group overflow-hidden rounded-lg">
-                <div class="h-48 overflow-hidden">
-                    <img src="images/macro-shot-of-green-thai-curry-spice-ble.png" alt="Thai Curry Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <h4 class="font-mono font-bold text-lg mb-4">Thai Green Curry</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono border border-white/10 px-2 py-1 rounded text-white/50 uppercase tracking-widest">Galangal</span>
-                        <span class="text-[10px] font-mono border border-white/10 px-2 py-1 rounded text-white/50 uppercase tracking-widest">Lemongrass</span>
-                    </div>
-                </div>
-            </div>
+        </div>
+
+        <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Shimmer loading state -->
+            <div class="animate-pulse bg-[#1A2035] h-80 rounded-lg"></div>
+            <div class="animate-pulse bg-[#1A2035] h-80 rounded-lg"></div>
+            <div class="animate-pulse bg-[#1A2035] h-80 rounded-lg"></div>
         </div>
     </section>
 
@@ -173,32 +160,105 @@
     </footer>
 
     <script>
-        const DB_ID = "63d76e7b-c36c-4861-a083-f368f54be605";
-        const form = document.getElementById('waitlist-form');
-        const successMsg = document.getElementById('success-msg');
-        const errorMsg = document.getElementById('error-msg');
-        const submitBtn = document.getElementById('submit-btn');
-        const signupCount = document.getElementById('signup-count');
+        const WAITLIST_DB = "63d76e7b-c36c-4861-a083-f368f54be605";
+        const RECIPES_DB = "vesta_recipes_v1"; // Placeholder ID
+        
+        const initialRecipes = [
+            {
+                name: "Thai Green Curry",
+                origin: "SE Asia",
+                cook_time: "25m",
+                image_url: "images/macro-shot-of-green-thai-curry-spice-ble.png",
+                spices: ["Galangal", "Lemongrass", "Thai Chili"]
+            },
+            {
+                name: "Szechuan Mapo Tofu",
+                origin: "China",
+                cook_time: "20m",
+                image_url: "images/macro-shot-of-vibrant-red-szechuan-peppe.png",
+                spices: ["Da Hong Pao", "Star Anise", "Chili"]
+            },
+            {
+                name: "Moroccan Lamb Tagine",
+                origin: "N. Africa",
+                cook_time: "35m",
+                image_url: "images/macro-shot-of-golden-ras-el-hanout-spice.png",
+                spices: ["Ras el Hanout", "Cinnamon", "Cumin"]
+            },
+            {
+                name: "Indian Butter Chicken",
+                origin: "S. Asia",
+                cook_time: "30m",
+                image_url: "images/professional-studio-photography-of-a-bow.png",
+                spices: ["Kashmiri Chili", "Garam Masala", "Fenugreek"]
+            },
+            {
+                name: "Mexican Tacos Al Pastor",
+                origin: "Mexico",
+                cook_time: "25m",
+                image_url: "images/professional-studio-photography-of-mexic.png",
+                spices: ["Achiote", "Guajillo", "Mexican Oregano"]
+            },
+            {
+                name: "Korean Beef Bulgogi",
+                origin: "E. Asia",
+                cook_time: "20m",
+                image_url: "images/professional-studio-photography-of-korea.png",
+                spices: ["Toasted Sesame", "Garlic", "Gochugaru"]
+            }
+        ];
+
+        function renderRecipes(recipes) {
+            const grid = document.getElementById('recipe-grid');
+            grid.innerHTML = recipes.map(recipe => `
+                <div class="menu-card bg-[#1A2035] border border-[#1A2035] rounded-xl overflow-hidden group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="${recipe.image_url}" alt="${recipe.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-[#0A0E1A]/80 backdrop-blur-md px-3 py-1 rounded-full font-mono text-[10px] text-white/80 border border-white/10">
+                            ${recipe.cook_time}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="font-mono text-[10px] text-[#00D4FF] uppercase tracking-widest mb-1">${recipe.origin}</p>
+                                <h4 class="font-mono font-bold text-lg leading-tight">${recipe.name}</h4>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${(recipe.spices || []).map(spice => `
+                                <span class="text-[9px] font-mono border border-white/10 px-2 py-1 rounded text-white/40 uppercase tracking-widest">${spice}</span>
+                            `).join('')}
+                        </div>
+                        <a href="#waitlist" class="w-full block text-center bg-[#00D4FF]/10 hover:bg-[#00D4FF] hover:text-[#0A0E1A] border border-[#00D4FF]/30 text-[#00D4FF] py-3 rounded font-mono text-xs font-bold uppercase transition-all">
+                            Notify on Launch
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize Menu
+        renderRecipes(initialRecipes);
 
         // Fetch count
-        fetch(`https://app.baget.ai/api/public/databases/${DB_ID}/count`)
+        fetch(`https://app.baget.ai/api/public/databases/${WAITLIST_DB}/count`)
             .then(res => res.json())
             .then(data => {
-                signupCount.innerText = `${data.count + 412} cooks on the list`;
-            })
-            .catch(() => {
-                signupCount.innerText = "Join the kitchen...";
+                document.getElementById('signup-count').innerText = `${data.count + 412} cooks on the list`;
             });
 
+        // Waitlist form
+        const form = document.getElementById('waitlist-form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            submitBtn.innerText = 'TRANSMITTING...';
-            submitBtn.disabled = true;
-            errorMsg.classList.add('hidden');
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = 'TRANSMITTING...';
+            btn.disabled = true;
 
             try {
                 const email = document.getElementById('email').value;
-                const res = await fetch(`https://app.baget.ai/api/public/databases/${DB_ID}/rows`, {
+                const res = await fetch(`https://app.baget.ai/api/public/databases/${WAITLIST_DB}/rows`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ data: { email, source: 'landing_page' } }),
@@ -206,14 +266,11 @@
 
                 if (res.ok) {
                     form.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
-                } else {
-                    throw new Error('Submit failed');
+                    document.getElementById('success-msg').classList.remove('hidden');
                 }
             } catch (err) {
-                errorMsg.classList.remove('hidden');
-                submitBtn.innerText = 'INITIALIZE ENROLLMENT';
-                submitBtn.disabled = false;
+                btn.innerText = 'INITIALIZE ENROLLMENT';
+                btn.disabled = false;
             }
         });
     </script>
